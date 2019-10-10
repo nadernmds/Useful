@@ -1,0 +1,6 @@
+﻿ private async Task brodcastWithFcm(string title)
+        {
+            Dictionary<string, string> DataToPassedFcm = new Dictionary<string, string>();
+            DataToPassedFcm.Add("type","special");
+            await new Fcm().Send(new Notification() {title="فروش ویژه",body = title },DataToPassedFcm);
+        }
