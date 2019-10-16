@@ -1,0 +1,3 @@
+USE rizkaransite_db
+go 
+EXEC sp_changedbowner 'sa'
