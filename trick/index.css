@@ -1,0 +1,79 @@
+@font-face {
+  font-family: samim;
+  src: url("fonts/Samim-FD.woff");
+}
+* {
+  font-family: samim;
+}
+.navLinks > li {
+  margin-right: 10px;
+}
+.button {
+  border: none;
+  background-color: #c81212;
+  color: white;
+  height: 35px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10%;
+  font-weight: bold;
+  text-decoration: none;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+.button:hover {
+  background-color: #9c0909;
+  cursor: pointer;
+}
+a {
+  text-decoration: none;
+  color: grey;
+}
+nav {
+  border: none;
+  padding: 3px;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.08) !important;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: -8px;
+  margin-left: -8px;
+  justify-content: space-between;
+}
+nav > img {
+  padding: 10px;
+  height: 40px;
+}
+.navLinks {
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  margin-right: auto;
+  margin-left: 20px;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+}
+.side-menu {
+  list-style: none;
+  padding-right: 0;
+  min-width: 180px;
+}
+.side-menu > li {
+  padding-top: 7px;
+  padding-right: 5px;
+  padding-left: 30px;
+  padding-bottom: 7px;
+  border-top: 1px solid rgba(194, 191, 191, 0.3);
+  cursor: pointer;
+  color: gray;
+}
+
+.side-menu > li:hover {
+  background-color: rgba(240, 239, 239, 0.8);
+}
