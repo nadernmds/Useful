@@ -1,0 +1,52 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using TeleSharp.TL;
+using TeleSharp.TL.Messages;
+using TLSharp.Core;
+
+namespace tlsharppep
+{
+    class News
+    {
+        public string news { get; set; }
+    }
+    class Program
+    {
+        private static int apiId = 69269;
+        private static string apiHash = "ddcd8ec57a14ceacbec95fc8b64bd87b";
+
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello World!");
+            doit();
+            Console.ReadKey();
+        }
+        static async void doit()
+        {
+            var client = new TelegramClient(apiId, apiHash);
+            await client.ConnectAsync();
+            var dialogs = (TLDialogsSlice)await client.GetUserDialogsAsync();
+            var chat = dialogs.Chats
+              .Where(c => c.GetType() == typeof(TLChannel))
+              .Cast<TLChannel>().FirstOrDefault(c => c.Title.Contains("نصر"));
+            var msgs = await client.GetHistoryAsync(new TLInputPeerChannel() { ChannelId = chat.Id, AccessHash = chat.AccessHash.Value });
+            //var hash = await client.SendCodeRequestAsync("+989375341576");
+            //var user = await client.MakeAuthAsync("+989375341576", hash, "71395");
+            var tlChannelMessages = (TLChannelMessages)msgs;
+            var s = new List<string>();
+
+            foreach (TLMessage item in tlChannelMessages.Messages)
+            {
+                var w = item.GetType();
+                if (item.GetType() == typeof(TLMessage))
+                {
+                    s.Add(((TLMessage)item).Message);
+                    if (((TLMessage)item).Media != null && ((TLMessage)item).Media.GetType()==typeof(TLMessageMediaPhoto)   ) s.Add(((TLMessageMediaPhoto)((TLMessage)item).Media).Caption);
+
+                }
+            }
+
+        }
+    }
+}
